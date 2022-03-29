@@ -1,13 +1,17 @@
 import * as React from "react"
-import Header from "./header"
+
+import Header from "./Header"
+import "./layout.css"
 import { GlobalStyles } from "twin.macro"
+import { Wrapper } from "./Wrapper"
 
 const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyles />
       <Header />
-      {children}
+
+      <Wrapper>{children}</Wrapper>
     </>
   )
 }
