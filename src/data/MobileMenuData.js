@@ -22,12 +22,12 @@ export const MobileMenuData = [
     submenu: [
       {
         title: "Breakfast Menu",
-        path: "menu/breakfast-menu",
+        path: "/menu/breakfast-menu",
         icon: <FaAngleDown />,
       },
       {
         title: "Lunch Menu",
-        path: "menu/lunch-menu",
+        path: "/menu/lunch-menu",
         icon: <FaAngleDown />,
       },
     ],
@@ -39,12 +39,12 @@ export const MobileMenuData = [
     submenu: [
       {
         title: "Location One",
-        path: "location/location-one",
+        path: "/location/location-one",
         icon: <FaAngleDown />,
       },
       {
         title: "Location Two",
-        path: "location/location-two",
+        path: "/location/location-two",
         icon: <FaAngleDown />,
       },
     ],
