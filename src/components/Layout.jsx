@@ -4,6 +4,7 @@ import Header from "./Header"
 import "./layout.css"
 import { GlobalStyles } from "twin.macro"
 import { Wrapper } from "./Wrapper"
+import Footer from "./Footer"
 
 const Layout = ({ children }) => {
   return (
@@ -12,6 +13,8 @@ const Layout = ({ children }) => {
       <Header />
 
       <Wrapper>{children}</Wrapper>
+
+      <Footer />
     </>
   )
 }

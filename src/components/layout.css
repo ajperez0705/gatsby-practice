@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
+.react-icons {
+  fill: #fb893d;
+}
+
 /*
 html {
   -ms-text-size-adjust: 100%;

@@ -17,7 +17,7 @@ export const MobileMenuData = [
   },
   {
     title: "Menu",
-    path: "#",
+    path: "",
     icon: <FaIcons.FaFileAlt />,
     submenu: [
       {
@@ -34,7 +34,7 @@ export const MobileMenuData = [
   },
   {
     title: "Location",
-    path: "/#",
+    path: "",
     icon: <FaIcons.FaMapMarkerAlt />,
     submenu: [
       {
