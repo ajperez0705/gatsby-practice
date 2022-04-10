@@ -54,16 +54,16 @@ function Footer() {
           })}
         </FooterLocationSection>
         <FooterSectionContainer>
-          <div css={tw`flex justify-center mb-3`}>
-            <TiSocialFacebook size={40} />
-            <TiSocialInstagram size={40} />
-            <TiSocialLinkedin size={40} />
-          </div>
           <h3 css={tw`mb-3`}>Subscribe to our newsletter</h3>
           <form action="submit">
             <input type="text" placeholder="Email Address" />
             <button>Submit</button>
           </form>
+          <div css={tw`flex justify-center mb-3`}>
+            <TiSocialFacebook size={40} />
+            <TiSocialInstagram size={40} />
+            <TiSocialLinkedin size={40} />
+          </div>
         </FooterSectionContainer>
       </FooterTopSection>
 

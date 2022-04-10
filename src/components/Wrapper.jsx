@@ -4,4 +4,5 @@ import "./layout.css"
 
 export const Wrapper = tw.div`
 px-4
+bg-baseBg
 `

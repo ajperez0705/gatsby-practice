@@ -15,6 +15,19 @@ module.exports = {
       textAlt: "#F9F9F9",
       accentText: "#727375",
     },
+
+    fontSize: {
+      h1: "60px",
+      h2: "48px",
+      h3: "40px",
+      h4: "32px",
+      h5: "28px",
+      h6: "24px",
+      subHeader: "24px",
+      body: "20px",
+      button: "24px ",
+      navLink: "24px",
+    },
     extend: {
       // colors: {
       //   primary: "#FE6804",
