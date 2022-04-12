@@ -1,19 +1,39 @@
 import * as React from "react"
-import Button from "../components/Global/Button"
-import MainHeader from "../components/Global/MainHeader"
-import ParagraphText from "../components/Global/ParagraphText"
-import SubHeader from "../components/Global/SubHeader"
+import Button from "../components/Atoms/Button"
+import Icon from "../components/Atoms/Icon"
+import MainHeader from "../components/Atoms/MainHeader"
+import ParagraphText from "../components/Atoms/ParagraphText"
+import SubHeader from "../components/Atoms/SubHeader"
 import Layout from "../components/layout"
+import CategoryCard from "../components/Molecules/CategoryCard"
+import HeadingContent from "../components/Molecules/HeadingContent"
 
-const Home = () => (
-  <Layout>
-    <SubHeader content="Testing" />
-    <MainHeader content="Main Header" tag="h1" />
-    <ParagraphText content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Unde consequatur magni facilis ut nam eos neque quae nesciunt est, totam omnis mollitia, necessitatibus autem, dolorem aperiam ea at consectetur libero." />
-    <Button content="Click Me" type="primary" link="about" />
-    <Button content="Click Me" type="secondary" link="about" />
-    <Button content="Click Me" type="alt" link="about" />
-  </Layout>
-)
+function Home() {
+  const buttonData = {
+    content: "Click Me",
+    type: "primary",
+    link: "breakfast-menu",
+  }
+
+  const buttonDataTwo = {
+    content: "Click Me",
+    type: "secondary",
+    link: "lunch-menu",
+  }
+
+  return (
+    <Layout>
+      <HeadingContent
+        subHeaderContent="This is a subheader"
+        mainHeaderContent="This is the main header"
+        mainHeaderTag="h1"
+        paragraphContent="Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quod reprehenderit, quas natus quibusdam dignissimos quos libero obcaecati beatae magnam impedit neque iste unde sint dicta, doloremque quasi possimus id."
+        buttonData={buttonData}
+        buttonDataTwo={buttonDataTwo}
+      />
+      <CategoryCard />
+    </Layout>
+  )
+}
 
 export default Home

@@ -57,11 +57,13 @@ px-8
 py-6
 bg-baseBgAlt
 text-accentText
-text-lg
+// text-lg
 shadow-md
 relative
 
 md:text-text
+
+xl:px-36
 `
 const Hamburger = tw.button`
 z-50

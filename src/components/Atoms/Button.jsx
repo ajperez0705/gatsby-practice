@@ -1,7 +1,7 @@
 import React from "react"
 import tw from "twin.macro"
 
-function Button({ content, type, link }) {
+function Button({ content, type = "primary", link }) {
   let styledButton
 
   switch (type) {
@@ -38,6 +38,7 @@ py-2
 transition 
 duration-200
 ease-out
+mr-6
 
 hover:ease-in
 hover:bg-primaryVariant
@@ -54,11 +55,13 @@ py-2
 transition 
 duration-200
 ease-out
+underline
 
 hover:bg-baseBgAlt
 hover:text-primary
 hover:scale-150
 hover:ease-in
+mr-6
 `
 
 const AltButton = tw.a`
@@ -68,6 +71,7 @@ text-primary
 transition 
 duration-200
 ease-out
+mr-6
 
 before:w-10/12
 before:bg-primary

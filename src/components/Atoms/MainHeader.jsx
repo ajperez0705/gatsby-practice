@@ -1,7 +1,7 @@
 import React from "react"
 import tw from "twin.macro"
 
-function MainHeader({ content, tag }) {
+function MainHeader({ content, tag = "h1" }) {
   let styledHeader
 
   switch (tag) {
@@ -31,17 +31,29 @@ function MainHeader({ content, tag }) {
 export default MainHeader
 
 const StyledMainH1 = tw.h1`
-text-h1
+text-5xl
+pb-2.5
+
+md:text-6xl
 `
 
 const StyledMainH2 = tw.h2`
-text-h2
+text-4xl
+pb-2.5
+
+md:text-5xl
 `
 
 const StyledMainH3 = tw.h3`
-text-h3
+text-3xl
+pb-2.5
+
+md:text-4xl
 `
 
 const StyledMainH4 = tw.h4`
-text-h4
+text-2xl
+pb-2.5
+
+md:text-3xl
 `

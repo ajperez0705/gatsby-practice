@@ -4,6 +4,10 @@
   fill: #fb893d;
 }
 
+body {
+  background: #FFFCF7;
+}
+
 /*
 html {
   -ms-text-size-adjust: 100%;

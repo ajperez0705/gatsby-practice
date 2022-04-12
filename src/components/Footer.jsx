@@ -83,6 +83,9 @@ text-textAlt
 text-center
 px-8
 py-6
+mt-10
+
+xl:px-36
 `
 
 const FooterSectionContainer = tw.div`

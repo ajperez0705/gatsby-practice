@@ -94,6 +94,7 @@ h-screen
 top-0
 px-8
 py-6
+z-10
 rounded-3xl
 // -left-full
 transition
@@ -126,6 +127,8 @@ flex
 flex-row
 align-items[center]
 relative
+text-xl
+
 
 md:first:pr-8
 md:w-auto
