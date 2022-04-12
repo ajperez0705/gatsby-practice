@@ -5,27 +5,32 @@ import Icon from "../Atoms/Icon"
 import MainHeader from "../Atoms/MainHeader"
 import ParagraphText from "../Atoms/ParagraphText"
 
-import test from "../../assets/food-placeholder.png"
-
-function CategoryCard() {
+function CategoryCard({
+  headerContent,
+  tag,
+  paragraphContent,
+  card,
+  src,
+  alt,
+}) {
+  console.log(`"${src}"`)
   return (
-    <CategoryCardContainer>
-      <StyledTextContent>
-        <Icon />
-        <MainHeader content="Category Header" tag="h4" />
-        <ParagraphText
-          content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit."
-          card={true}
+    <>
+      <CategoryCardContainer>
+        <StyledTextContent>
+          <Icon />
+          <MainHeader content={headerContent} tag={tag} />
+          <ParagraphText content={paragraphContent} card={card} />
+        </StyledTextContent>
+        <StaticImage
+          src={`"${src}"`}
+          alt={alt}
+          placeholder="blurred"
+          layout="constrained"
+          objectFit="contain"
         />
-      </StyledTextContent>
-      <StaticImage
-        src="../../assets/food-placeholder-mask.png"
-        alt="food"
-        placeholder="blurred"
-        layout="constrained"
-        objectFit="contain"
-      />
-    </CategoryCardContainer>
+      </CategoryCardContainer>
+    </>
   )
 }
 

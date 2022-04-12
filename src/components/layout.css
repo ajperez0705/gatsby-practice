@@ -5,9 +5,13 @@
 }
 
 body {
-  background: #FFFCF7;
+  background: #fffcf7;
 }
 
+/* Controls the width of the active tab in the mobile slider carousel */
+.slick-slide.slick-active.slick-current {
+  width: 320px !important;
+}
 /*
 html {
   -ms-text-size-adjust: 100%;

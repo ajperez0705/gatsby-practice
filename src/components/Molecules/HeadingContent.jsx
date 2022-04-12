@@ -10,26 +10,27 @@ function HeadingContent({
   mainHeaderContent,
   mainHeaderTag,
   paragraphContent,
-  buttonData,
-  buttonDataTwo,
-  alignment = "left"
+  buttonData = null,
+  alignment = "left",
 }) {
+  console.log(buttonData)
+
   return (
     <StyledHeadingContainer alignment={alignment}>
       <SubHeader content={subHeaderContent} />
       <MainHeader content={mainHeaderContent} tag={mainHeaderTag} />
       <ParagraphText content={paragraphContent} alignment={alignment} />
       <StyledButtonContainer>
-      <Button
-        content={buttonData.content}
-        type={buttonData.type}
-        link={buttonData.link}
-      />
-      <Button
-        content={buttonDataTwo.content}
-        type={buttonDataTwo.type}
-        link={buttonDataTwo.link}
-      />
+        {buttonData !== null &&
+          buttonData.map(button => {
+            return (
+              <Button
+                content={button.content}
+                type={button.type}
+                link={button.link}
+              />
+            )
+          })}
       </StyledButtonContainer>
     </StyledHeadingContainer>
   )
@@ -40,14 +41,11 @@ export default HeadingContent
 const StyledHeadingContainer = ({ alignment, children }) => (
   <div
     css={[
-      alignment === 'center' ?
-      tw`
+      alignment === "center"
+        ? tw`
       text-center
-      ` 
-      
-      : 
-
-      tw`
+      `
+        : tw`
       text-center
       md:text-left 
       `,
@@ -56,7 +54,7 @@ const StyledHeadingContainer = ({ alignment, children }) => (
       py-6
       md:px-4
       md:py-6
-      `
+      `,
     ]}
   >
     {children}
@@ -66,5 +64,3 @@ const StyledHeadingContainer = ({ alignment, children }) => (
 const StyledButtonContainer = tw.div`
 first:mr-6
 `
-
-

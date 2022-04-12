@@ -29,7 +29,7 @@ function Button({ content, type = "primary", link }) {
 export default Button
 
 const PrimaryButton = tw.a`
-text-button
+// text-button
 text-baseBgAlt
 bg-primary
 rounded-lg
@@ -46,7 +46,7 @@ hover:scale-150
 `
 
 const SecondaryButton = tw.a`
-text-button
+// text-button
 text-primaryVariant
 bg-baseBg
 rounded-lg
@@ -66,7 +66,7 @@ mr-6
 
 const AltButton = tw.a`
 relative
-text-button
+// text-button
 text-primary
 transition 
 duration-200
