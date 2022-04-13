@@ -13,7 +13,6 @@ function CategoryCard({
   src,
   alt,
 }) {
-  console.log(`"${src}"`)
   return (
     <>
       <CategoryCardContainer>

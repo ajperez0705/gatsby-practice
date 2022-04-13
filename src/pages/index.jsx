@@ -9,20 +9,17 @@ import CategoryCard from "../components/Molecules/CategoryCard"
 import HeadingContent from "../components/Molecules/HeadingContent"
 import MenuCategoryCtaSection from "../components/Organisms/MenuCategoryCtaSection"
 
-function Home() {
-  const buttonData = [
-    {
-      content: "Click Me",
-      type: "primary",
-      link: "breakfast-menu",
-    },
+import { graphql, useStaticQuery } from "gatsby"
 
-    {
-      content: "Click Me",
-      type: "secondary",
-      link: "lunch-menu",
-    },
-  ]
+function Home() {
+  const data = useStaticQuery(query)
+  const {
+    id,
+    subheader,
+    heading,
+    paragraphText: { paragraphText },
+    childrenContentfulMainHeaderButtonDataJsonNode: [{ buttonData }],
+  } = data.contentfulMainHeader
 
   const breakfastCategories = [
     {
@@ -48,13 +45,12 @@ function Home() {
   return (
     <Layout>
       <HeadingContent
-        subHeaderContent="This is a subheader"
-        mainHeaderContent="This is the main header"
+        subHeaderContent={subheader}
+        mainHeaderContent={heading}
         mainHeaderTag="h1"
-        paragraphContent="Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quod reprehenderit, quas natus quibusdam dignissimos quos libero obcaecati beatae magnam impedit neque iste unde sint dicta, doloremque quasi possimus id."
+        paragraphContent={paragraphText}
         buttonData={buttonData}
       />
-      <CategoryCard />
       <MenuCategoryCtaSection categories={breakfastCategories}>
         <HeadingContent
           subHeaderContent="This is a subheader"
@@ -69,3 +65,32 @@ function Home() {
 }
 
 export default Home
+
+export const query = graphql`
+  {
+    contentfulMainHeader(siteSection: { eq: "home_hero-content" }) {
+      id
+      subheader
+      paragraphText {
+        paragraphText
+      }
+      heading
+      childrenContentfulMainHeaderButtonDataJsonNode {
+        buttonData {
+          content
+          link
+          type
+        }
+      }
+    }
+    contentfulMenuItem {
+      category
+      foodType
+      id
+      itemDescription
+      itemImage {
+        gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+      }
+    }
+  }
+`

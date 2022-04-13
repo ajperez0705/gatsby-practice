@@ -14,7 +14,6 @@ function HeadingContent({
   alignment = "left",
 }) {
   console.log(buttonData)
-
   return (
     <StyledHeadingContainer alignment={alignment}>
       <SubHeader content={subHeaderContent} />
