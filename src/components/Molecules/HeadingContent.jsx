@@ -51,6 +51,8 @@ const StyledHeadingContainer = ({ alignment, children }) => (
 
       tw`
       py-6
+      flex-1
+
       md:px-4
       md:py-6
       `,
