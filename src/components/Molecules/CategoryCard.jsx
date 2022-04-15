@@ -4,30 +4,18 @@ import { StaticImage } from "gatsby-plugin-image"
 import Icon from "../Atoms/Icon"
 import MainHeader from "../Atoms/MainHeader"
 import ParagraphText from "../Atoms/ParagraphText"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-function CategoryCard({
-  headerContent,
-  tag,
-  paragraphContent,
-  card,
-  src,
-  alt,
-}) {
+function CategoryCard({ title, tag, description, card, alt, image, category }) {
   return (
     <>
       <CategoryCardContainer>
         <StyledTextContent>
           <Icon />
-          <MainHeader content={headerContent} tag={tag} />
-          <ParagraphText content={paragraphContent} card={card} />
+          <MainHeader content={title} tag={tag} />
+          <ParagraphText content={description} card={card} />
         </StyledTextContent>
-        <StaticImage
-          src={`"${src}"`}
-          alt={alt}
-          placeholder="blurred"
-          layout="constrained"
-          objectFit="contain"
-        />
+        <GatsbyImage image={image.gatsbyImageData} />
       </CategoryCardContainer>
     </>
   )

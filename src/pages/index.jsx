@@ -15,7 +15,6 @@ import { graphql, useStaticQuery } from "gatsby"
 
 function Home() {
   const data = useStaticQuery(query)
-  console.log(data)
   const {
     id,
     subheader,
@@ -26,28 +25,27 @@ function Home() {
 
   const heroImage = data.allContentfulAsset.nodes[0]
   const heroImageBg = heroImage.gatsbyImageData.images.fallback.src
-  console.log(heroImageBg)
 
-  const breakfastCategories = [
-    {
-      headerContent: "Category title",
-      tag: "h4",
-      paragraphContent:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      card: true,
-      src: "../../assets/food-placeholder-mask.png",
-      alt: "food",
-    },
-    {
-      headerContent: "Category title",
-      tag: "h4",
-      paragraphContent:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-      card: true,
-      src: "../../assets/food-placeholder-mask.png",
-      alt: "food",
-    },
-  ]
+  // const breakfastCategories = [
+  //   {
+  //     headerContent: "Category title",
+  //     tag: "h4",
+  //     paragraphContent:
+  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  //     card: true,
+  //     src: "../../assets/food-placeholder-mask.png",
+  //     alt: "food",
+  //   },
+  //   {
+  //     headerContent: "Category title",
+  //     tag: "h4",
+  //     paragraphContent:
+  //       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+  //     card: true,
+  //     src: "../../assets/food-placeholder-mask.png",
+  //     alt: "food",
+  //   },
+  // ]
 
   return (
     <Layout>
@@ -67,7 +65,7 @@ function Home() {
           css={tw`display[none] md:display[block] md:flex-[1.5]`}
         />
       </StyledHero>
-      {/* <MenuCategoryCtaSection categories={breakfastCategories}>
+      <MenuCategoryCtaSection menuData={data.allContentfulMenuItem.nodes}>
         <HeadingContent
           subHeaderContent="This is a subheader"
           mainHeaderContent="This is the main header"
@@ -75,7 +73,7 @@ function Home() {
           paragraphContent="Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo quod reprehenderit, quas natus quibusdam dignissimos quos libero obcaecati beatae magnam impedit neque iste unde sint dicta, doloremque quasi possimus id."
           alignment="center"
         />
-      </MenuCategoryCtaSection> */}
+      </MenuCategoryCtaSection>
     </Layout>
   )
 }
@@ -108,15 +106,6 @@ export const query = graphql`
         }
       }
     }
-    contentfulMenuItem {
-      category
-      foodType
-      id
-      itemDescription
-      itemImage {
-        gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-      }
-    }
     allContentfulAsset {
       nodes {
         gatsbyImageData(
@@ -125,6 +114,20 @@ export const query = graphql`
           layout: CONSTRAINED
         )
         filename
+      }
+    }
+    allContentfulMenuItem(
+      filter: { featured: { eq: true }, foodType: { eq: "breakfast" } }
+    ) {
+      nodes {
+        category
+        foodType
+        itemImage {
+          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+        }
+        price
+        title
+        itemDescription
       }
     }
   }

@@ -8,21 +8,8 @@ import { IoLogoTux } from "react-icons/io"
 import { FiMenu } from "react-icons/fi"
 import { FaTimes } from "react-icons/fa"
 
-function Header() {
+function Header({ screenWidth }) {
   const [openMobileMenu, setOpenMobileMenu] = useState(false)
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
-
-  useEffect(() => {
-    const changeWidth = () => {
-      setScreenWidth(window.innerWidth)
-    }
-
-    window.addEventListener("resize", changeWidth)
-
-    return () => {
-      window.removeEventListener("resize", changeWidth)
-    }
-  }, [])
 
   return (
     <StyledHeader>
