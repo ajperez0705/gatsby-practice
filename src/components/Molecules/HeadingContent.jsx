@@ -6,7 +6,7 @@ import ParagraphText from "../Atoms/ParagraphText"
 import SubHeader from "../Atoms/SubHeader"
 
 function HeadingContent({
-  subHeaderContent,
+  subHeaderContent = null,
   mainHeaderContent,
   mainHeaderTag,
   paragraphContent,
@@ -16,7 +16,7 @@ function HeadingContent({
   console.log(buttonData)
   return (
     <StyledHeadingContainer alignment={alignment}>
-      <SubHeader content={subHeaderContent} />
+      {subHeaderContent ? <SubHeader content={subHeaderContent} /> : null}
       <MainHeader content={mainHeaderContent} tag={mainHeaderTag} />
       <ParagraphText content={paragraphContent} alignment={alignment} />
       <StyledButtonContainer>

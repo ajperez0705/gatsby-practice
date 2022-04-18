@@ -1,12 +1,11 @@
 import React from "react"
 import tw from "twin.macro"
-import { StaticImage } from "gatsby-plugin-image"
 import Icon from "../Atoms/Icon"
 import MainHeader from "../Atoms/MainHeader"
 import ParagraphText from "../Atoms/ParagraphText"
 import { GatsbyImage } from "gatsby-plugin-image"
 
-function CategoryCard({ title, tag, description, card, alt, image, category }) {
+function CategoryCard({ title, tag, description, card, alt, image, foodType }) {
   return (
     <>
       <CategoryCardContainer>
