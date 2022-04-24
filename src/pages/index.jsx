@@ -8,6 +8,7 @@ import SubHeader from "../components/Atoms/SubHeader"
 import Layout from "../components/layout"
 import CategoryCard from "../components/Molecules/CategoryCard"
 import HeadingContent from "../components/Molecules/HeadingContent"
+import ThreeImageSection from "../components/Molecules/ThreeImageSection"
 import MenuCategoryCtaSection from "../components/Organisms/MenuCategoryCtaSection"
 import { GatsbyImage } from "gatsby-plugin-image"
 
@@ -21,14 +22,18 @@ function Home() {
   const {
     allContentfulMainHeader: { nodes: mainHeaders },
     allContentfulMenuItem: { nodes: menuItems },
-    allContentfulAsset: { nodes: images },
+    allContentfulBusinessDetails,
+    allContentfulPageImages: { nodes: images },
+    allContentfulTestimonials,
   } = data
 
-  console.log(data)
+  console.log(allContentfulTestimonials)
 
-  let heroImage = images.find(image => image.title === "Homepage Hero")
+  let heroImage = images[0].images.find(
+    image => image.title === "Homepage Hero"
+  )
 
-  let placeholder = images.find(image => image.title == "Placeholder Image")
+  let placeholder = images.find(image => image.title === "Placeholder Image")
 
   // let breakfastMenu = menuItems.forEach()
 
@@ -41,9 +46,10 @@ function Home() {
         }}
       >
         {mainHeaders.map((heroHeader, index) => {
-          if (heroHeader.siteSection === "home_hero-header") {
+          if (heroHeader.siteSection === "home_menuOne-header") {
             return (
               <HeadingContent
+                key={index}
                 subHeaderContent={heroHeader.subheader}
                 mainHeaderContent={heroHeader.heading}
                 mainHeaderTag={heroHeader.elementTag}
@@ -60,9 +66,10 @@ function Home() {
       </StyledHero>
       <MenuCategoryCtaSection menuData={menuItems} foodType="breakfast">
         {mainHeaders.map((aboutHeader, index) => {
-          if (aboutHeader.siteSection == "home__aboutOne-header") {
+          if (aboutHeader.siteSection === "home__aboutOne-header") {
             return (
               <HeadingContent
+                key={index}
                 subHeaderContent={aboutHeader.subheader}
                 mainHeaderContent={aboutHeader.heading}
                 mainHeaderTag={aboutHeader.elementTag}
@@ -74,9 +81,44 @@ function Home() {
           }
         })}
       </MenuCategoryCtaSection>
-      <HomeAboutSection>
-        <InfoCard />
+      <HomeAboutSection
+        images={images}
+        section="aboutOne"
+        businessData={allContentfulBusinessDetails}
+      >
+        {mainHeaders.map((aboutHeader, index) => {
+          if (aboutHeader.siteSection === "home__aboutOne-header") {
+            return (
+              <HeadingContent
+                key={index}
+                subHeaderContent={aboutHeader.subheader}
+                mainHeaderContent={aboutHeader.heading}
+                mainHeaderTag={aboutHeader.elementTag}
+                paragraphContent={aboutHeader.paragraphText.paragraphText}
+                buttonData={aboutHeader?.buttonData?.buttonData}
+                alignment="center"
+              />
+            )
+          }
+        })}
       </HomeAboutSection>
+      <MenuCategoryCtaSection menuData={menuItems} foodType="lunch">
+        {mainHeaders.map((aboutHeader, index) => {
+          if (aboutHeader.siteSection === "home__menuTwo-header") {
+            return (
+              <HeadingContent
+                key={index}
+                subHeaderContent={aboutHeader.subheader}
+                mainHeaderContent={aboutHeader.heading}
+                mainHeaderTag={aboutHeader.elementTag}
+                paragraphContent={aboutHeader.paragraphText.paragraphText}
+                buttonData={aboutHeader?.buttonData?.buttonData}
+                alignment="center"
+              />
+            )
+          }
+        })}
+      </MenuCategoryCtaSection>
     </Layout>
   )
 }
@@ -166,10 +208,12 @@ export const query = graphql`
         }
       }
     }
-    allContentfulAsset {
+    allContentfulPageImages(filter: { title: { eq: "Homepage Images" } }) {
       nodes {
-        gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
-        title
+        images {
+          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+          title
+        }
       }
     }
   }

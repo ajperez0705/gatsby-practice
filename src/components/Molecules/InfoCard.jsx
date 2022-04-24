@@ -1,19 +1,39 @@
 import React from "react"
+import tw from "twin.macro"
 import Icon from "../Atoms/Icon"
 import HeadingContent from "./HeadingContent"
 
-function InfoCard() {
+function InfoCard(businessData) {
   return (
-    <>
-      <Icon />
-      <HeadingContent
-        mainHeaderContent="test"
-        mainHeaderTag="h4"
-        paragraphContent="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates id provident ducimus possimus itaque pariatur ut molestias optio nisi soluta! "
-        alignment="center"
-      />
-    </>
+    <StyledInfoCardContainer>
+      {businessData.businessData.nodes[1].homeAboutSectionInfoCards.infoCardData
+        .filter(detail => detail.featured === true)
+        .map((detail, index) => {
+          return (
+            <div>
+              <Icon />
+              <HeadingContent
+                key={index}
+                mainHeaderTag="h4"
+                mainHeaderContent={detail.title}
+                paragraphContent={detail.paragraphText}
+                alignment="left"
+              />
+            </div>
+          )
+        })}
+    </StyledInfoCardContainer>
   )
 }
 
 export default InfoCard
+
+const StyledInfoCardContainer = tw.div`
+grid
+grid-cols-1
+auto-rows-min
+
+md:grid-cols-2
+md:flex-direction[row]
+md:flex-1
+`

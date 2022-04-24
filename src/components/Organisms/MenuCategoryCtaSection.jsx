@@ -14,8 +14,6 @@ function MenuCategoryCtaSection({ children, menuData, screenWidth, foodType }) {
     infinite: true,
   }
 
-  console.log(screenWidth)
-
   return (
     <>
       {children}

@@ -13,7 +13,7 @@ function HeadingContent({
   buttonData = null,
   alignment = "left",
 }) {
-  console.log(buttonData)
+
   return (
     <StyledHeadingContainer alignment={alignment}>
       {subHeaderContent ? <SubHeader content={subHeaderContent} /> : null}
