@@ -15,6 +15,8 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, useStaticQuery } from "gatsby"
 import HomeAboutSection from "../components/Organisms/HomeAboutSection"
 import InfoCard from "../components/Molecules/InfoCard"
+import TestimonialCard from "../components/Molecules/TestimonialCard"
+import TestimonialSection from "../components/Organisms/TestimonialSection"
 
 function Home() {
   const data = useStaticQuery(query)
@@ -24,10 +26,10 @@ function Home() {
     allContentfulMenuItem: { nodes: menuItems },
     allContentfulBusinessDetails,
     allContentfulPageImages: { nodes: images },
-    allContentfulTestimonials,
+    allContentfulTestimonials: { nodes: testimonials },
   } = data
 
-  console.log(allContentfulTestimonials)
+  console.log(testimonials)
 
   let heroImage = images[0].images.find(
     image => image.title === "Homepage Hero"
@@ -46,7 +48,7 @@ function Home() {
         }}
       >
         {mainHeaders.map((heroHeader, index) => {
-          if (heroHeader.siteSection === "home_menuOne-header") {
+          if (heroHeader.siteSection === "home_hero-header") {
             return (
               <HeadingContent
                 key={index}
@@ -119,6 +121,23 @@ function Home() {
           }
         })}
       </MenuCategoryCtaSection>
+      <TestimonialSection testimonials={testimonials}>
+        {mainHeaders.map((testimonial, index) => {
+          if (testimonial.siteSection === "home__testimonial-header") {
+            return (
+              <HeadingContent
+                key={index}
+                subHeaderContent={testimonial.subheader}
+                mainHeaderContent={testimonial.heading}
+                mainHeaderTag={testimonial.elementTag}
+                paragraphContent={testimonial.paragraphText.paragraphText}
+                buttonData={testimonial?.buttonData?.buttonData}
+                alignment="center"
+              />
+            )
+          }
+        })}
+      </TestimonialSection>
     </Layout>
   )
 }

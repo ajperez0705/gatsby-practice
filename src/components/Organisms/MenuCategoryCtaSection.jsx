@@ -3,10 +3,12 @@ import tw from "twin.macro"
 import HeadingContent from "../Molecules/HeadingContent"
 import Button from "../Atoms/Button"
 
+// Slider imports
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import CategoryCard from "../Molecules/CategoryCard"
+import { mediumScreen } from "../../helpers/breakpoints"
 
 function MenuCategoryCtaSection({ children, menuData, screenWidth, foodType }) {
   const sliderSettings = {
@@ -17,12 +19,13 @@ function MenuCategoryCtaSection({ children, menuData, screenWidth, foodType }) {
   return (
     <>
       {children}
-      {screenWidth < 768 ? (
+      {screenWidth < mediumScreen ? (
         <Slider {...sliderSettings}>
           {menuData.map((item, index) => {
             if (item.foodType === foodType) {
               return (
                 <CategoryCard
+                  key={index}
                   id={index}
                   title={item.title}
                   tag="h4"
