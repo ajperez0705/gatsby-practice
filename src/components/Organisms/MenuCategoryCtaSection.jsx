@@ -1,6 +1,5 @@
 import React from "react"
 import tw from "twin.macro"
-import HeadingContent from "../Molecules/HeadingContent"
 import Button from "../Atoms/Button"
 
 // Slider imports

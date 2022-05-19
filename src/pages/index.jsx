@@ -1,22 +1,19 @@
 import * as React from "react"
-import tw, { styled } from "twin.macro"
-import Button from "../components/Atoms/Button"
-import Icon from "../components/Atoms/Icon"
-import MainHeader from "../components/Atoms/MainHeader"
-import ParagraphText from "../components/Atoms/ParagraphText"
-import SubHeader from "../components/Atoms/SubHeader"
-import Layout from "../components/layout"
-import CategoryCard from "../components/Molecules/CategoryCard"
-import HeadingContent from "../components/Molecules/HeadingContent"
-import ThreeImageSection from "../components/Molecules/ThreeImageSection"
-import MenuCategoryCtaSection from "../components/Organisms/MenuCategoryCtaSection"
-import { GatsbyImage } from "gatsby-plugin-image"
 
+// Styles
+import tw from "twin.macro"
+import Layout from "../components/layout"
+
+// Tools
+import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, useStaticQuery } from "gatsby"
+
+// Components
+import MenuCategoryCtaSection from "../components/Organisms/MenuCategoryCtaSection"
+import HeadingContent from "../components/Molecules/HeadingContent"
 import HomeAboutSection from "../components/Organisms/HomeAboutSection"
-import InfoCard from "../components/Molecules/InfoCard"
-import TestimonialCard from "../components/Molecules/TestimonialCard"
 import TestimonialSection from "../components/Organisms/TestimonialSection"
+import LocationsSection from "../components/Organisms/LocationsSection"
 
 function Home() {
   const data = useStaticQuery(query)
@@ -27,22 +24,16 @@ function Home() {
     allContentfulBusinessDetails,
     allContentfulPageImages: { nodes: images },
     allContentfulTestimonials: { nodes: testimonials },
+    allContentfulLocation: {nodes: locations}
   } = data
-
-  console.log(testimonials)
 
   let heroImage = images[0].images.find(
     image => image.title === "Homepage Hero"
   )
 
-  let placeholder = images.find(image => image.title === "Placeholder Image")
-
-  // let breakfastMenu = menuItems.forEach()
-
   return (
     <Layout>
       <StyledHero
-        // heroImage={heroImageBg}
         css={{
           backgroundImage: `url('${heroImage.gatsbyImageData.images.fallback.src}')`,
         }}
@@ -138,6 +129,85 @@ function Home() {
           }
         })}
       </TestimonialSection>
+      <StyledHero
+        // heroImage={heroImageBg}
+        css={{
+          backgroundImage: `url('${heroImage.gatsbyImageData.images.fallback.src}')`,
+        }}
+      >
+        {mainHeaders.map((heroHeader, index) => {
+          if (heroHeader.siteSection === "home__subhero-header") {
+            return (
+              <HeadingContent
+                key={index}
+                subHeaderContent={heroHeader.subheader}
+                mainHeaderContent={heroHeader.heading}
+                mainHeaderTag={heroHeader.elementTag}
+                paragraphContent={heroHeader.paragraphText.paragraphText}
+              />
+            )
+          }
+        })}
+        <GatsbyImage
+          image={heroImage.gatsbyImageData}
+          css={tw`display[none] md:display[block] md:flex-[1.5]`}
+        />
+      </StyledHero>
+      <MenuCategoryCtaSection menuData={menuItems} foodType="drink">
+        {mainHeaders.map((aboutHeader, index) => {
+          if (aboutHeader.siteSection === "home__menuThree-header") {
+            return (
+              <HeadingContent
+                key={index}
+                subHeaderContent={aboutHeader.subheader}
+                mainHeaderContent={aboutHeader.heading}
+                mainHeaderTag={aboutHeader.elementTag}
+                paragraphContent={aboutHeader.paragraphText.paragraphText}
+                buttonData={aboutHeader?.buttonData?.buttonData}
+                alignment="center"
+              />
+            )
+          }
+        })}
+      </MenuCategoryCtaSection>
+      <HomeAboutSection
+        images={images}
+        section="aboutOne"
+        businessData={allContentfulBusinessDetails}
+      >
+        {mainHeaders.map((aboutHeader, index) => {
+          if (aboutHeader.siteSection === "home__aboutTwo-header") {
+            return (
+              <HeadingContent
+                key={index}
+                subHeaderContent={aboutHeader.subheader}
+                mainHeaderContent={aboutHeader.heading}
+                mainHeaderTag={aboutHeader.elementTag}
+                paragraphContent={aboutHeader.paragraphText.paragraphText}
+                buttonData={aboutHeader?.buttonData?.buttonData}
+                alignment="center"
+              />
+            )
+          }
+        })}
+      </HomeAboutSection>
+      <LocationsSection locations={locations}>
+        {mainHeaders.map((locationHeader, index) => {
+            if (locationHeader.siteSection === "home__locations-header") {
+              return (
+                <HeadingContent
+                  key={index}
+                  subHeaderContent={locationHeader.subheader}
+                  mainHeaderContent={locationHeader.heading}
+                  mainHeaderTag={locationHeader.elementTag}
+                  paragraphContent={locationHeader.paragraphText.paragraphText}
+                  buttonData={locationHeader?.buttonData?.buttonData}
+                  alignment="center"
+                />
+              )
+            }
+          })}
+      </LocationsSection>
     </Layout>
   )
 }
@@ -218,15 +288,20 @@ export const query = graphql`
         }
       }
     }
-    allContentfulLocationDetails {
-      nodes {
-        siteSection
-        title
-        paragraphText {
-          paragraphText
-        }
+    allContentfulLocation {
+    nodes {
+      id
+      locationImage {
+        gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
       }
+      paragraphText {
+        paragraphText
+      }
+      pageId
+      title
+      linkText
     }
+  }
     allContentfulPageImages(filter: { title: { eq: "Homepage Images" } }) {
       nodes {
         images {
