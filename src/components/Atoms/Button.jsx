@@ -1,22 +1,21 @@
 import React from "react"
 import tw from "twin.macro"
+import { Link } from "gatsby"
 
 function Button({ content, type = "primary", link }) {
   let styledButton
 
   switch (type) {
     case "primary":
-      styledButton = <PrimaryButton href={`/${link}/`}>{content}</PrimaryButton>
+      styledButton = <PrimaryButton to={`${link}`}>{content}</PrimaryButton>
       break
 
     case "secondary":
-      styledButton = (
-        <SecondaryButton href={`/${link}/`}>{content}</SecondaryButton>
-      )
+      styledButton = <SecondaryButton to={`${link}`}>{content}</SecondaryButton>
       break
 
     case "alt":
-      styledButton = <AltButton href={`/${link}/`}>{content}</AltButton>
+      styledButton = <AltButton to={`${link}`}>{content}</AltButton>
       break
 
     default:
@@ -28,7 +27,7 @@ function Button({ content, type = "primary", link }) {
 
 export default Button
 
-const PrimaryButton = tw.a`
+const PrimaryButton = tw(Link)`
 // text-button
 text-baseBgAlt
 bg-primary
@@ -45,7 +44,7 @@ hover:bg-primaryVariant
 hover:scale-150
 `
 
-const SecondaryButton = tw.a`
+const SecondaryButton = tw(Link)`
 // text-button
 text-primaryVariant
 bg-baseBg
@@ -64,7 +63,7 @@ hover:ease-in
 mr-6
 `
 
-const AltButton = tw.a`
+const AltButton = tw(Link)`
 relative
 // text-button
 text-primary

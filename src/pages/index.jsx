@@ -24,8 +24,10 @@ function Home() {
     allContentfulBusinessDetails,
     allContentfulPageImages: { nodes: images },
     allContentfulTestimonials: { nodes: testimonials },
-    allContentfulLocation: {nodes: locations}
+    allContentfulLocation: { nodes: locations },
   } = data
+
+  console.log(images)
 
   let heroImage = images[0].images.find(
     image => image.title === "Homepage Hero"
@@ -78,6 +80,7 @@ function Home() {
         images={images}
         section="aboutOne"
         businessData={allContentfulBusinessDetails}
+        businessDataType="about"
       >
         {mainHeaders.map((aboutHeader, index) => {
           if (aboutHeader.siteSection === "home__aboutOne-header") {
@@ -174,6 +177,7 @@ function Home() {
         images={images}
         section="aboutOne"
         businessData={allContentfulBusinessDetails}
+        businessDataType="about"
       >
         {mainHeaders.map((aboutHeader, index) => {
           if (aboutHeader.siteSection === "home__aboutTwo-header") {
@@ -193,20 +197,20 @@ function Home() {
       </HomeAboutSection>
       <LocationsSection locations={locations}>
         {mainHeaders.map((locationHeader, index) => {
-            if (locationHeader.siteSection === "home__locations-header") {
-              return (
-                <HeadingContent
-                  key={index}
-                  subHeaderContent={locationHeader.subheader}
-                  mainHeaderContent={locationHeader.heading}
-                  mainHeaderTag={locationHeader.elementTag}
-                  paragraphContent={locationHeader.paragraphText.paragraphText}
-                  buttonData={locationHeader?.buttonData?.buttonData}
-                  alignment="center"
-                />
-              )
-            }
-          })}
+          if (locationHeader.siteSection === "home__locations-header") {
+            return (
+              <HeadingContent
+                key={index}
+                subHeaderContent={locationHeader.subheader}
+                mainHeaderContent={locationHeader.heading}
+                mainHeaderTag={locationHeader.elementTag}
+                paragraphContent={locationHeader.paragraphText.paragraphText}
+                buttonData={locationHeader?.buttonData?.buttonData}
+                alignment="center"
+              />
+            )
+          }
+        })}
       </LocationsSection>
     </Layout>
   )
@@ -289,19 +293,19 @@ export const query = graphql`
       }
     }
     allContentfulLocation {
-    nodes {
-      id
-      locationImage {
-        gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+      nodes {
+        id
+        locationImage {
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+        }
+        paragraphText {
+          paragraphText
+        }
+        pageId
+        title
+        linkText
       }
-      paragraphText {
-        paragraphText
-      }
-      pageId
-      title
-      linkText
     }
-  }
     allContentfulPageImages(filter: { title: { eq: "Homepage Images" } }) {
       nodes {
         images {

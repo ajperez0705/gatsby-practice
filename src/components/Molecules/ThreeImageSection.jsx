@@ -5,6 +5,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 function ThreeImageSection({ images, section }) {
   let sectionImages
 
+  // This switch statement would be used to pull out images for specific about sections of site. Need to come back here when images are added with purpose (actual title and unique images)
   switch (section) {
     case "aboutOne":
       sectionImages = images[0].images.filter(
@@ -23,17 +24,19 @@ function ThreeImageSection({ images, section }) {
           return <GatsbyImage key={index} image={image.gatsbyImageData} />
         })}
       </StyledImageMain>
-      <StyledImageSectionSupport>
-        {sectionImages.slice(1, 3).map((image, index) => {
-          return (
-            <GatsbyImage
-              key={index}
-              image={image.gatsbyImageData}
-              tw="flex-1 "
-            />
-          )
-        })}
-      </StyledImageSectionSupport>
+      {sectionImages.length > 1 && (
+        <StyledImageSectionSupport>
+          {sectionImages.slice(1, 3).map((image, index) => {
+            return (
+              <GatsbyImage
+                key={index}
+                image={image.gatsbyImageData}
+                tw="flex-1 "
+              />
+            )
+          })}
+        </StyledImageSectionSupport>
+      )}
     </StyledImageSectionContainer>
   )
 }

@@ -3,13 +3,24 @@ import tw from "twin.macro"
 import InfoCard from "../Molecules/InfoCard"
 import ThreeImageSection from "../Molecules/ThreeImageSection"
 
-function HomeAboutSection({ children, images, section, businessData }) {
+function HomeAboutSection({
+  children,
+  images,
+  section,
+  businessData,
+  businessDataType,
+}) {
+  console.log(businessDataType)
+
   return (
     <>
       {children}
       <StyledHomeAboutSectionContainer>
         <ThreeImageSection images={images} section={section} />
-        <InfoCard businessData={businessData} />
+        <InfoCard
+          businessData={businessData}
+          businessDataType={businessDataType}
+        />
       </StyledHomeAboutSectionContainer>
     </>
   )
