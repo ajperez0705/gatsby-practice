@@ -10,8 +10,6 @@ function HomeAboutSection({
   businessData,
   businessDataType,
 }) {
-  console.log(businessDataType)
-
   return (
     <>
       {children}

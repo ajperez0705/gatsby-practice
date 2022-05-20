@@ -53,6 +53,7 @@ function About() {
         images={images}
         section="aboutOne"
         businessData={allContentfulBusinessDetails}
+        businessDataType="about"
       >
         {mainHeaders.map((aboutHeader, index) => {
           if (aboutHeader.siteSection === "about__aboutTwo-header") {
@@ -74,6 +75,7 @@ function About() {
         images={images}
         section="aboutOne"
         businessData={allContentfulBusinessDetails}
+        businessDataType="about"
       >
         {mainHeaders.map((aboutHeader, index) => {
           if (aboutHeader.siteSection === "about__aboutThree-header") {
