@@ -7,11 +7,10 @@ import Layout from "../../components/layout"
 // Tools
 import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, useStaticQuery } from "gatsby"
-import HeadingContent from "../../components/Molecules/HeadingContent"
-import InfoCard from "../../components/Molecules/InfoCard"
 
 // Components
-// import HeadingContent from "../components/Molecules/HeadingContent"
+import HeadingContent from "../../components/Molecules/HeadingContent"
+import InfoCard from "../../components/Molecules/InfoCard"
 
 function LocationOne() {
   const data = useStaticQuery(query)

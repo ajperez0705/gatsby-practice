@@ -14,6 +14,8 @@ import HeadingContent from "../components/Molecules/HeadingContent"
 import HomeAboutSection from "../components/Organisms/HomeAboutSection"
 import TestimonialSection from "../components/Organisms/TestimonialSection"
 import LocationsSection from "../components/Organisms/LocationsSection"
+import Hero from "../components/Hero"
+import Section from "../components/Section"
 
 function Home() {
   const data = useStaticQuery(query)
@@ -27,29 +29,25 @@ function Home() {
     allContentfulLocation: { nodes: locations },
   } = data
 
-  console.log(images)
-
   let heroImage = images[0].images.find(
     image => image.title === "Homepage Hero"
   )
 
   return (
     <Layout>
-      <StyledHero
-        css={{
-          backgroundImage: `url('${heroImage.gatsbyImageData.images.fallback.src}')`,
-        }}
-      >
+      <Hero fallbackImage={heroImage.gatsbyImageData.images.fallback.src}>
         {mainHeaders.map((heroHeader, index) => {
           if (heroHeader.siteSection === "home_hero-header") {
             return (
               <HeadingContent
                 key={index}
+                textColor="white"
                 subHeaderContent={heroHeader.subheader}
                 mainHeaderContent={heroHeader.heading}
                 mainHeaderTag={heroHeader.elementTag}
                 paragraphContent={heroHeader.paragraphText.paragraphText}
                 buttonData={heroHeader.buttonData.buttonData}
+                buttonAlignment="left"
               />
             )
           }
@@ -58,7 +56,8 @@ function Home() {
           image={heroImage.gatsbyImageData}
           css={tw`display[none] md:display[block] md:flex-[1.5]`}
         />
-      </StyledHero>
+      </Hero>
+      {/* <Section> */}
       <MenuCategoryCtaSection menuData={menuItems} foodType="breakfast">
         {mainHeaders.map((aboutHeader, index) => {
           if (aboutHeader.siteSection === "home__aboutOne-header") {
@@ -71,11 +70,14 @@ function Home() {
                 paragraphContent={aboutHeader.paragraphText.paragraphText}
                 buttonData={aboutHeader?.buttonData?.buttonData}
                 alignment="center"
+                buttonAlignment="center"
               />
             )
           }
         })}
       </MenuCategoryCtaSection>
+      {/* </Section> */}
+
       <HomeAboutSection
         images={images}
         section="aboutOne"
@@ -132,12 +134,7 @@ function Home() {
           }
         })}
       </TestimonialSection>
-      <StyledHero
-        // heroImage={heroImageBg}
-        css={{
-          backgroundImage: `url('${heroImage.gatsbyImageData.images.fallback.src}')`,
-        }}
-      >
+      <Hero fallbackImage={heroImage.gatsbyImageData.images.fallback.src}>
         {mainHeaders.map((heroHeader, index) => {
           if (heroHeader.siteSection === "home__subhero-header") {
             return (
@@ -155,7 +152,7 @@ function Home() {
           image={heroImage.gatsbyImageData}
           css={tw`display[none] md:display[block] md:flex-[1.5]`}
         />
-      </StyledHero>
+      </Hero>
       <MenuCategoryCtaSection menuData={menuItems} foodType="drink">
         {mainHeaders.map((aboutHeader, index) => {
           if (aboutHeader.siteSection === "home__menuThree-header") {
@@ -218,14 +215,14 @@ function Home() {
 
 export default Home
 
-const StyledHero = tw.div`
-flex
-justify-between
-align-items[center]
-flex-wrap
+// const StyledHero = tw.div`
+// flex
+// justify-between
+// align-items[center]
+// flex-wrap
 
-md:bg-none!
-`
+// md:bg-none!
+// `
 
 export const query = graphql`
   {

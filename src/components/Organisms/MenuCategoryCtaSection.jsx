@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import CategoryCard from "../Molecules/CategoryCard"
 import { mediumScreen } from "../../helpers/breakpoints"
+import Section from "../Section"
 
 function MenuCategoryCtaSection({ children, menuData, screenWidth, foodType }) {
   const sliderSettings = {
@@ -16,10 +17,10 @@ function MenuCategoryCtaSection({ children, menuData, screenWidth, foodType }) {
   }
 
   return (
-    <>
+    <Section>
       {children}
       {screenWidth < mediumScreen ? (
-        <Slider {...sliderSettings}>
+        <Slider {...sliderSettings} css={[tw`mb-16`]}>
           {menuData.map((item, index) => {
             if (item.foodType === foodType) {
               return (
@@ -59,7 +60,7 @@ function MenuCategoryCtaSection({ children, menuData, screenWidth, foodType }) {
         </div>
       )}
       <Button content="Click Me" link="/" />
-    </>
+    </Section>
   )
 }
 

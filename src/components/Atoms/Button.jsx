@@ -2,8 +2,10 @@ import React from "react"
 import tw from "twin.macro"
 import { Link } from "gatsby"
 
-function Button({ content, type = "primary", link }) {
+function Button({ content, type = "primary", link, alignment }) {
   let styledButton
+
+  console.log(alignment)
 
   switch (type) {
     case "primary":
@@ -22,10 +24,30 @@ function Button({ content, type = "primary", link }) {
       break
   }
 
-  return styledButton
+  return <ButtonContainer alignment={alignment}>{styledButton}</ButtonContainer>
 }
 
 export default Button
+
+const ButtonContainer = ({ alignment, children }) => (
+  <div
+    css={[
+      tw`
+      text-center
+      `,
+
+      alignment === "center"
+        ? tw`
+      md:text-center
+      `
+        : tw`
+      md:text-left       
+      `,
+    ]}
+  >
+    {children}
+  </div>
+)
 
 const PrimaryButton = tw(Link)`
 // text-button

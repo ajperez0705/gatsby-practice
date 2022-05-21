@@ -6,20 +6,21 @@ import ParagraphText from "../Atoms/ParagraphText"
 import SubHeader from "../Atoms/SubHeader"
 
 function HeadingContent({
+  textColor,
   subHeaderContent = null,
   mainHeaderContent,
   mainHeaderTag,
   paragraphContent,
   buttonData = null,
   alignment = "left",
+  buttonAlignment,
 }) {
-
   return (
-    <StyledHeadingContainer alignment={alignment}>
+    <StyledHeadingContainer alignment={alignment} textColor={textColor}>
       {subHeaderContent ? <SubHeader content={subHeaderContent} /> : null}
       <MainHeader content={mainHeaderContent} tag={mainHeaderTag} />
       <ParagraphText content={paragraphContent} alignment={alignment} />
-      <StyledButtonContainer>
+      <StyledButtonContainer alignment={buttonAlignment}>
         {buttonData !== null &&
           buttonData.map(button => {
             return (
@@ -27,6 +28,7 @@ function HeadingContent({
                 content={button.content}
                 type={button.type}
                 link={button.link}
+                alignment={buttonAlignment}
               />
             )
           })}
@@ -37,7 +39,7 @@ function HeadingContent({
 
 export default HeadingContent
 
-const StyledHeadingContainer = ({ alignment, children }) => (
+const StyledHeadingContainer = ({ alignment, textColor, children }) => (
   <div
     css={[
       alignment === "center"
@@ -49,12 +51,21 @@ const StyledHeadingContainer = ({ alignment, children }) => (
       md:text-left 
       `,
 
+      textColor
+        ? tw`
+        text-baseBgAlt
+        `
+        : tw`
+        text-text  
+        `,
+
       tw`
       py-6
       flex-1
 
       md:px-4
       md:py-6
+      md:text-text
       `,
     ]}
   >
@@ -62,6 +73,24 @@ const StyledHeadingContainer = ({ alignment, children }) => (
   </div>
 )
 
-const StyledButtonContainer = tw.div`
-first:mr-6
-`
+const StyledButtonContainer = ({ alignment, children }) => (
+  <div
+    css={[
+      tw`
+      flex
+      justify-center
+      first:mr-6
+      `,
+
+      alignment === "center"
+        ? tw`
+      md:justify-center
+      `
+        : tw`
+      md:justify-start       
+      `,
+    ]}
+  >
+    {children}
+  </div>
+)

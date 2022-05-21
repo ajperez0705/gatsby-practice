@@ -32,9 +32,7 @@ const Layout = ({ children }) => {
     <>
       <GlobalStyles />
       <Header screenWidth={screenWidth} />
-
       <Wrapper>{childrenWithProps}</Wrapper>
-
       <Footer />
     </>
   )
