@@ -25,6 +25,17 @@ flex-wrap
 -mx-4
 px-4
 min-h-[80vh]
+relative
+
+after:block
+after:absolute
+after:top-0
+after:left-0
+after:background-color[rgba(0, 0, 0, 0.24);]
+after:h-full
+after:w-full
+
+md:after:display[none]
 
 md:bg-none!
 `

@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react"
 
-import Header from "./Header"
+// Styles
 import "./layout.css"
 import { GlobalStyles } from "twin.macro"
+
+// Components
+import Header from "./Header"
 import { Wrapper } from "./Wrapper"
 import Footer from "./Footer"
 

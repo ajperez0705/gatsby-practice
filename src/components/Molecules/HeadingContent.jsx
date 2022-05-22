@@ -15,6 +15,7 @@ function HeadingContent({
   alignment = "left",
   buttonAlignment,
 }) {
+  console.log("This is from Heading Content", buttonAlignment)
   return (
     <StyledHeadingContainer alignment={alignment} textColor={textColor}>
       {subHeaderContent ? <SubHeader content={subHeaderContent} /> : null}
@@ -25,6 +26,7 @@ function HeadingContent({
           buttonData.map(button => {
             return (
               <Button
+                key={button.link}
                 content={button.content}
                 type={button.type}
                 link={button.link}
@@ -62,6 +64,7 @@ const StyledHeadingContainer = ({ alignment, textColor, children }) => (
       tw`
       py-6
       flex-1
+      z-index[1]
 
       md:px-4
       md:py-6

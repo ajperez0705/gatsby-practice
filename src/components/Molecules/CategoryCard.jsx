@@ -35,6 +35,7 @@ h-[408px]
 
 md:h-[472px] 
 md:max-w-[392px]
+md:mx-4
 `
 
 const StyledTextContent = tw.div`

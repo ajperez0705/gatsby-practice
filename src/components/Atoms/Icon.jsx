@@ -15,7 +15,7 @@ function Icon({ icon = "heart", size = 36 }) {
       break
   }
 
-  return <StyledIcon>{chosenIcon}</StyledIcon>
+  return <StyledIcon className="styled-icon">{chosenIcon}</StyledIcon>
 }
 
 export default Icon
@@ -23,4 +23,7 @@ export default Icon
 const StyledIcon = tw.div`
 text-primary
 pb-2
+text-center
+
+md:text-left
 `

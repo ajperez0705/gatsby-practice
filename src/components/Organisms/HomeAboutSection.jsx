@@ -2,6 +2,7 @@ import React from "react"
 import tw from "twin.macro"
 import InfoCard from "../Molecules/InfoCard"
 import ThreeImageSection from "../Molecules/ThreeImageSection"
+import Section from "../Section"
 
 function HomeAboutSection({
   children,
@@ -11,7 +12,7 @@ function HomeAboutSection({
   businessDataType,
 }) {
   return (
-    <>
+    <Section>
       {children}
       <StyledHomeAboutSectionContainer>
         <ThreeImageSection images={images} section={section} />
@@ -20,7 +21,7 @@ function HomeAboutSection({
           businessDataType={businessDataType}
         />
       </StyledHomeAboutSectionContainer>
-    </>
+    </Section>
   )
 }
 

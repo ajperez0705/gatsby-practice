@@ -12,6 +12,17 @@ body {
 .slick-slide.slick-active.slick-current {
   width: 320px !important;
 }
+
+.slick-list {
+  padding-bottom: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+  .styled-icon svg {
+    margin: 0 auto;
+  }
+}
+
 /*
 html {
   -ms-text-size-adjust: 100%;

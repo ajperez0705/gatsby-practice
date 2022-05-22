@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 function Button({ content, type = "primary", link, alignment }) {
   let styledButton
 
-  console.log(alignment)
+  console.log("this is from button", alignment)
 
   switch (type) {
     case "primary":
