@@ -45,17 +45,20 @@ export default ThreeImageSection
 
 const StyledImageSectionContainer = tw.div`
 flex-1
+mr-4
 
 md:flex
 md:flex-direction[column]
 `
 
 const StyledImageMain = tw.div`
-
+mb-1
 `
 
 const StyledImageSectionSupport = tw.div`
 display[none]
+
+first:pr-1
 
 md:display[flex]
 `

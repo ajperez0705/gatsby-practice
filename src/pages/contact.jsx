@@ -34,6 +34,7 @@ function Contact() {
               return (
                 <HeadingContent
                   key={index}
+                  textColor="white"
                   subHeaderContent={heroHeader.subheader}
                   mainHeaderContent={heroHeader.heading}
                   mainHeaderTag={heroHeader.elementTag}

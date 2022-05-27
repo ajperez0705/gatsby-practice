@@ -40,6 +40,7 @@ function About() {
                 mainHeaderTag={heroHeader.elementTag}
                 paragraphContent={heroHeader.paragraphText.paragraphText}
                 buttonData={heroHeader?.buttonData?.buttonData}
+                alignment="center"
               />
             )
           }
@@ -64,7 +65,7 @@ function About() {
                 mainHeaderContent={aboutHeader.heading}
                 mainHeaderTag={aboutHeader.elementTag}
                 paragraphContent={aboutHeader.paragraphText.paragraphText}
-                buttonData={aboutHeader?.buttonData?.buttonData}
+                // buttonData={aboutHeader?.buttonData?.buttonData}
                 alignment="center"
               />
             )
@@ -108,6 +109,8 @@ function About() {
                 mainHeaderTag={heroHeader.elementTag}
                 paragraphContent={heroHeader.paragraphText.paragraphText}
                 buttonData={heroHeader?.buttonData?.buttonData}
+                alignment="center"
+                buttonAlignment="center"
               />
             )
           }

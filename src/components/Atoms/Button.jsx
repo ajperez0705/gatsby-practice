@@ -43,6 +43,14 @@ const ButtonContainer = ({ alignment, children }) => (
         : tw`
       md:text-left       
       `,
+
+      alignment === "stay center"
+        ? tw`
+      md:text-center
+      `
+        : tw`
+      md:text-center       
+      `,
     ]}
   >
     {children}
@@ -59,7 +67,7 @@ py-2
 transition 
 duration-200
 ease-out
-mr-6
+// mr-6
 
 hover:ease-in
 hover:bg-primaryVariant
@@ -92,7 +100,7 @@ text-primary
 transition 
 duration-200
 ease-out
-mr-6
+// mr-6
 
 before:w-10/12
 before:bg-primary

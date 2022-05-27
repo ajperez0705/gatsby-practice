@@ -47,6 +47,7 @@ const StyledHeadingContainer = ({ alignment, textColor, children }) => (
       alignment === "center"
         ? tw`
       text-center
+      md:text-center
       `
         : tw`
       text-center

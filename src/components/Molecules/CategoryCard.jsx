@@ -32,6 +32,7 @@ rounded-3xl
 p-4
 shadow-lg
 h-[408px] 
+mb-6
 
 md:h-[472px] 
 md:max-w-[392px]

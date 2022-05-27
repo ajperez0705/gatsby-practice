@@ -24,7 +24,7 @@ align-items[center]
 flex-wrap
 -mx-4
 px-4
-min-h-[80vh]
+// min-h-[80vh]
 relative
 
 after:block

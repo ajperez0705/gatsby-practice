@@ -140,6 +140,7 @@ function Home() {
             return (
               <HeadingContent
                 key={index}
+                textColor="white"
                 subHeaderContent={heroHeader.subheader}
                 mainHeaderContent={heroHeader.heading}
                 mainHeaderTag={heroHeader.elementTag}
@@ -203,7 +204,7 @@ function Home() {
                 mainHeaderTag={locationHeader.elementTag}
                 paragraphContent={locationHeader.paragraphText.paragraphText}
                 buttonData={locationHeader?.buttonData?.buttonData}
-                alignment="center"
+                alignment="stay center"
               />
             )
           }

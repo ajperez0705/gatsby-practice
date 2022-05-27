@@ -7,11 +7,11 @@ import Layout from "../../components/layout"
 // Tools
 import { GatsbyImage } from "gatsby-plugin-image"
 import { graphql, useStaticQuery } from "gatsby"
-import HeadingContent from "../../components/Molecules/HeadingContent"
-import InfoCard from "../../components/Molecules/InfoCard"
 
 // Components
-// import HeadingContent from "../components/Molecules/HeadingContent"
+import InfoCard from "../../components/Molecules/InfoCard"
+import Section from "../../components/Section"
+import HeadingContent from "../../components/Molecules/HeadingContent"
 
 function LocationOne() {
   const data = useStaticQuery(query)
@@ -21,55 +21,58 @@ function LocationOne() {
     allContentfulLocation: { nodes: location },
   } = data
 
-  console.log(location[0].locationImage.gatsbyImageData)
-
   return (
     <Layout>
-      <div>
-        {mainHeaders.map((locationHeader, index) => {
-          if (
-            locationHeader.siteSection === "location__locationTwo-headerOne"
-          ) {
-            return (
-              <HeadingContent
-                key={index}
-                subHeaderContent={locationHeader.subheader}
-                mainHeaderContent={locationHeader.heading}
-                mainHeaderTag={locationHeader.elementTag}
-                paragraphContent={locationHeader.paragraphText.paragraphText}
-                buttonData={locationHeader?.buttonData?.buttonData}
-                alignment="center"
-              />
-            )
-          }
-        })}
-        <InfoCard businessData={location} businessDataType="location" />
+      <LocationLayout>
+        <div>
+          {mainHeaders.map((locationHeader, index) => {
+            if (
+              locationHeader.siteSection === "location__locationTwo-headerOne"
+            ) {
+              return (
+                <HeadingContent
+                  key={index}
+                  subHeaderContent={locationHeader.subheader}
+                  mainHeaderContent={locationHeader.heading}
+                  mainHeaderTag={locationHeader.elementTag}
+                  paragraphContent={locationHeader.paragraphText.paragraphText}
+                  buttonData={locationHeader?.buttonData?.buttonData}
+                  alignment="center"
+                />
+              )
+            }
+          })}
+          <InfoCard businessData={location} businessDataType="location" />
+        </div>
         <div>Map Goes Here</div>
-      </div>
-      <StyledHero
-        css={{
-          backgroundImage: `url('${location[0].locationImage.gatsbyImageData.images.fallback.src}')`,
-        }}
-      >
-        {mainHeaders.map((heroHeader, index) => {
-          if (heroHeader.siteSection === "location__locationTwo-headerTwo") {
-            return (
-              <HeadingContent
-                key={index}
-                subHeaderContent={heroHeader.subheader}
-                mainHeaderContent={heroHeader.heading}
-                mainHeaderTag={heroHeader.elementTag}
-                paragraphContent={heroHeader.paragraphText.paragraphText}
-                buttonData={heroHeader?.buttonData?.buttonData}
-              />
-            )
-          }
-        })}
-        <GatsbyImage
-          image={location[0].locationImage.gatsbyImageData}
-          css={tw`display[none] md:display[block] md:flex-[1.5]`}
-        />
-      </StyledHero>
+      </LocationLayout>
+      <Section>
+        <StyledHero
+          css={{
+            backgroundImage: `url('${location[0].locationImage.gatsbyImageData.images.fallback.src}')`,
+          }}
+        >
+          {mainHeaders.map((heroHeader, index) => {
+            if (heroHeader.siteSection === "location__locationTwo-headerTwo") {
+              return (
+                <HeadingContent
+                  key={index}
+                  textColor="white"
+                  subHeaderContent={heroHeader.subheader}
+                  mainHeaderContent={heroHeader.heading}
+                  mainHeaderTag={heroHeader.elementTag}
+                  paragraphContent={heroHeader.paragraphText.paragraphText}
+                  buttonData={heroHeader?.buttonData?.buttonData}
+                />
+              )
+            }
+          })}
+          <GatsbyImage
+            image={location[0].locationImage.gatsbyImageData}
+            css={tw`display[none] md:display[block] md:flex-[1.5]`}
+          />
+        </StyledHero>
+      </Section>
     </Layout>
   )
 }
@@ -127,4 +130,10 @@ align-items[center]
 flex-wrap
 
 md:bg-none!
+`
+const LocationLayout = tw.div`
+flex
+flex-col
+
+md:flex-row
 `
